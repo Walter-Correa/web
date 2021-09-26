@@ -2,14 +2,17 @@ import * as z from "zod"
 
 export const AuthorSchema = z.object({
   id: z.string(),
-  email: z.string(),
   name: z.string(),
-  bio: z.string().optional(),
   admin: z.boolean(),
   createdAt: z.string(),
-  updatedAt: z.string(),
 })
 export type Author = z.infer<typeof AuthorSchema>
+
+export const CategorySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+})
+export type Category = z.infer<typeof CategorySchema>
 
 export const PostSchema = z.object({
   id: z.string(),
@@ -25,6 +28,7 @@ export const PostSchema = z.object({
   replyPostId: z.string().optional(),
   rootPostId: z.string().optional(),
   author: AuthorSchema,
+  category: CategorySchema,
 })
 export type Post = z.infer<typeof PostSchema>
 
