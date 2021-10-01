@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/gosimple/slug"
-	"github.com/prisma/prisma-client-go/runtime/types"
 
 	"github.com/openmultiplayer/web/server/src/db"
 )
@@ -155,7 +154,6 @@ func (d *DB) GetThreads(ctx context.Context, tags []string, before time.Time, so
 	// TODO: Fix this when prisma-client-go has a fix for array intersection queries.
 	tagFilter := []db.PostWhereParam{}
 	for _, tag := range tags {
-		fmt.Println("tag:", tag)
 		tagFilter = append(tagFilter, db.Post.Tags.Some(db.Tag.Name.Equals(tag)))
 	}
 
@@ -173,7 +171,7 @@ func (d *DB) GetThreads(ctx context.Context, tags []string, before time.Time, so
 					db.Post.Category.Fetch(),
 				).
 				Take(max).
-				OrderBy(db.Post.CreatedAt.Order(types.Direction(sort))).
+				OrderBy(db.Post.CreatedAt.Order(db.SortOrder(sort))).
 				Exec(ctx)
 		} else {
 			return d.db.Post.
@@ -187,7 +185,7 @@ func (d *DB) GetThreads(ctx context.Context, tags []string, before time.Time, so
 					db.Post.Category.Fetch(),
 				).
 				Take(max).
-				OrderBy(db.Post.CreatedAt.Order(types.Direction(sort))).
+				OrderBy(db.Post.CreatedAt.Order(db.SortOrder(sort))).
 				Exec(ctx)
 		}
 	}()
@@ -229,7 +227,7 @@ func (d *DB) GetPosts(ctx context.Context, slug string, max, skip int, deleted b
 		).
 		Take(max).
 		Skip(skip).
-		OrderBy(db.Post.CreatedAt.Order(types.ASC)).
+		OrderBy(db.Post.CreatedAt.Order(db.SortOrderAsc)).
 		Exec(ctx)
 	if err != nil {
 		return nil, err
