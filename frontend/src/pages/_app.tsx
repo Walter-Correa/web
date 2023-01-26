@@ -1,63 +1,11 @@
-//                                                                            //
-//                                           #@@@@@@@@@/                      //
-//                                      (@@%%%%%%%%%%%%%%&@%                  //
-//                                   %@%%%%%%%%%%%%%%%%%%%%%&@(               //
-//                                 (@%%%%%%%%%%%%%%%%%%%%%%%%%%@(             //
-//                               %@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&%            //
-//                              %&%%%%%%%%%%%%%%%%%%&@@%%%%%%%%%%&@#          //
-//                            .@&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%///*/@@/     //
-//                            @%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#///////*#@.  //
-//                           @&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%////*/&@@,   //
-//                          (@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%(#@%/        //
-//                          &%%%%%%%%%%%%%%%%%%%%%%%%%&@@@@&(/.  &(           //
-//                         *&%%%%%%%%%%%%%%%%%%%%%%@%           ,@            //
-//                        .@&%%%%%%%%%%%%%%%%%%%%@,             @.            //
-//                        @@%%%%%%%%%%%%%%%%%%%&#              (&             //
-//                       .@%%%%%%%%%%%%%%%%%%%&#               @%             //
-//                       &&%%%%%%%%%%%%%%%%%%@#               .@(             //
-//                      @@%%%%%%%%%%%%%%%%%%&#                *@,             //
-//                     #@%%%%%%%%%%%%%%%%%%&@,                /@              //
-//                    ,@%%%%%%%%%%%%%%%%%%%@#                 (@              //
-//                   ,@%%%%%%%%%%%%%%%%%%%&#                  (&              //
-//                   @&%%%%%%%%%%%%%%%%%%%%                   (@              //
-//                  &%%%%%%%%%%%%%%%%%%%%%%%                  *@.             //
-//                 @@%%%%%%%%%%%%%%%%%%%%%%@.                 ,@*             //
-//                #&%%%%%%%%%%%%%%%%%%%%%%%@(                 .@(             //
-//               (@%%%%%%%%%%%%%%%%%%%%%%%%@(.                 @#             //
-//              #@%%%%%%%%%%%%%%%%%%%%%%%%%@/..                @%             //
-//             ,@%%%%%%%%%%%%%&%%%%%%%%%%%%@..                 @%             //
-//            (@%%%%%%%%%%%%%%&@%%%%%%%%%%@/ .                .@(             //
-//           (@%%%%%%%%%%%%%%%%&@%%%%%%%%&@ .                 ,@*             //
-//          /@%%%%%%%%%%%%%%%%%%%@&%%%%%%@/..                 (@              //
-//         /@%%%%%%%%%%%%%%%%%%@,.@&%%%%@,.                   #(              //
-//        .@%%%%%%%%%%%%%%%%%%@  . #@%@@..                    @*              //
-//        @%%%%%%%%%%%%%%%%%&@,    .. ..                     (#               //
-//       @&%%%%%%%%%%%%%%%%%#                               /@.               //
-//     .@&%%%%%%%%%%%%%%%%@&                                &/                //
-//   (@&%%%%%%%%%%%%%%%%%@                                 @,                 //
-// /@%%%%%%%%%%%%%%%%%%&*                                *@*                  //
-// /@%%%%%%%%%%%%%%&@.                                  %#                    //
-//    #%@&%%%%%%@%.                                   ,@*                     //
-//         ,&@&                                     /@#//&@/                  //
-//              *#&@(*,                        .*#&%/////(##@/                //
-//        ........... @(*#&@@@@@@(/////#@@@@&@* ..,*/#%@@@%.,,,.              //
-//        .............%&#(/////////////////(##&&.,,,.,,.,...                 //
-//                     .,.. ,(&@@%/*,#@@@@@@@,,,,,.                           //
-//                           ..........,,,.,...                               //
-//                                                                            //
-//                              For Edmund.                                   //
-//                              2021-04-11                                    //
-//                                                                            //
-
 import type { AppProps } from "next/app";
-import Head from "next/head";
 import Router from "next/router";
 import { DefaultSeo } from "next-seo";
 import { ToastContainer } from "react-nextjs-toast";
 import NProgress from "nprogress";
 
-import Nav from "src/components/Nav";
-import Footer from "src/components/Footer";
+import Nav from "src/components/site/Nav";
+import Footer from "src/components/site/Footer";
 
 import "normalize.css";
 import "tachyons/css/tachyons.min.css";
@@ -66,88 +14,29 @@ import "remark-admonitions/styles/classic.css";
 
 import "src/styles/base.css";
 import { AuthProvider } from "src/auth/hooks";
-import { ChakraProvider } from "@chakra-ui/react";
-import theme from "../styles/theme";
+import { Chakra } from "src/components/Chakra";
+import Fonts from "src/styles/Fonts";
 import React from "react";
+import { NextPage } from "next";
 
 // Trigger client-side progress bar for client-side page transitions.
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-const App = ({ Component, pageProps, router }: AppProps) => (
-  <ChakraProvider theme={theme}>
-    <Head>
-      <link rel="stylesheet" href="/fonts.css" />
+const App: NextPage<AppProps> = ({ Component, pageProps, router }) => (
+  <Chakra cookies={pageProps.cookies}>
+    <Fonts />
 
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `<!--
-//                                                                            //
-//                                           #@@@@@@@@@/                      //
-//                                      (@@%%%%%%%%%%%%%%&@%                  //
-//                                   %@%%%%%%%%%%%%%%%%%%%%%&@(               //
-//                                 (@%%%%%%%%%%%%%%%%%%%%%%%%%%@(             //
-//                               %@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&%            //
-//                              %&%%%%%%%%%%%%%%%%%%&@@%%%%%%%%%%&@#          //
-//                            .@&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%///*/@@/     //
-//                            @%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#///////*#@.  //
-//                           @&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%////*/&@@,   //
-//                          (@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%(#@%/        //
-//                          &%%%%%%%%%%%%%%%%%%%%%%%%%&@@@@&(/.  &(           //
-//                         *&%%%%%%%%%%%%%%%%%%%%%%@%           ,@            //
-//                        .@&%%%%%%%%%%%%%%%%%%%%@,             @.            //
-//                        @@%%%%%%%%%%%%%%%%%%%&#              (&             //
-//                       .@%%%%%%%%%%%%%%%%%%%&#               @%             //
-//                       &&%%%%%%%%%%%%%%%%%%@#               .@(             //
-//                      @@%%%%%%%%%%%%%%%%%%&#                *@,             //
-//                     #@%%%%%%%%%%%%%%%%%%&@,                /@              //
-//                    ,@%%%%%%%%%%%%%%%%%%%@#                 (@              //
-//                   ,@%%%%%%%%%%%%%%%%%%%&#                  (&              //
-//                   @&%%%%%%%%%%%%%%%%%%%%                   (@              //
-//                  &%%%%%%%%%%%%%%%%%%%%%%%                  *@.             //
-//                 @@%%%%%%%%%%%%%%%%%%%%%%@.                 ,@*             //
-//                #&%%%%%%%%%%%%%%%%%%%%%%%@(                 .@(             //
-//               (@%%%%%%%%%%%%%%%%%%%%%%%%@(.                 @#             //
-//              #@%%%%%%%%%%%%%%%%%%%%%%%%%@/..                @%             //
-//             ,@%%%%%%%%%%%%%&%%%%%%%%%%%%@..                 @%             //
-//            (@%%%%%%%%%%%%%%&@%%%%%%%%%%@/ .                .@(             //
-//           (@%%%%%%%%%%%%%%%%&@%%%%%%%%&@ .                 ,@*             //
-//          /@%%%%%%%%%%%%%%%%%%%@&%%%%%%@/..                 (@              //
-//         /@%%%%%%%%%%%%%%%%%%@,.@&%%%%@,.                   #(              //
-//        .@%%%%%%%%%%%%%%%%%%@  . #@%@@..                    @*              //
-//        @%%%%%%%%%%%%%%%%%&@,    .. ..                     (#               //
-//       @&%%%%%%%%%%%%%%%%%#                               /@.               //
-//     .@&%%%%%%%%%%%%%%%%@&                                &/                //
-//   (@&%%%%%%%%%%%%%%%%%@                                 @,                 //
-// /@%%%%%%%%%%%%%%%%%%&*                                *@*                  //
-// /@%%%%%%%%%%%%%%&@.                                  %#                    //
-//    #%@&%%%%%%@%.                                   ,@*                     //
-//         ,&@&                                     /@#//&@/                  //
-//              *#&@(*,                        .*#&%/////(##@/                //
-//        ........... @(*#&@@@@@@(/////#@@@@&@* ..,*/#%@@@%.,,,.              //
-//        .............%&#(/////////////////(##&&.,,,.,,.,...                 //
-//                     .,.. ,(&@@%/*,#@@@@@@@,,,,,.                           //
-//                           ..........,,,.,...                               //
-//                                                                            //
-//                              For Edmund.                                   //
-//                              2021-04-11                                    //
-//                                                                            //
--->
-`,
-        }}
-      ></div>
-    </Head>
-
-    {/* 
+    {/*
       Sets the default meta tags for all pages.
       https://github.com/garmeeh/next-seo
     */}
     <DefaultSeo
       title="Open Multiplayer"
       titleTemplate="open.mp | %s"
-      description="An upcoming multiplayer mod for Grand Theft Auto: San Andreas that will be fully backwards compatible with the existing multiplayer mod San Andreas Multiplayer."
-      canonical="https://www.open.mp"
+      description="A multiplayer mod for Grand Theft Auto: San Andreas that is fully backwards compatible with San Andreas Multiplayer"
+      canonical="https://open.mp"
       twitter={{
         cardType: "summary",
         site: "@openmultiplayer",
@@ -158,29 +47,26 @@ const App = ({ Component, pageProps, router }: AppProps) => (
     {/* Toast notification positioning container */}
     <ToastContainer align="right" />
 
-    {/* This is flex to make <section> elements gapless */}
-    <div id="container">
-      {/* Provides authentication context for child components */}
-      <AuthProvider>
-        <Nav
-          items={[
-            { name: "Home", path: "/", exact: true },
-            { name: "FAQ", path: "/faq" },
-            { name: "Forums", path: "https://burgershot.gg/" },
-            { name: "Servers", path: "/servers" },
-            { name: "Docs", path: "/docs" },
-            { name: "Blog", path: "/blog" },
-          ]}
-          route={router.pathname}
-        />
+    <AuthProvider>
+      <Nav
+        items={[
+          { name: "Home", path: "/", exact: true },
+          { name: "FAQ", path: "/faq" },
+          { name: "Forums", path: "https://forum.open.mp" },
+          { name: "Servers", path: "/servers" },
+          { name: "Partners", path: "/partners" },
+          { name: "Docs", path: "/docs" },
+          { name: "Blog", path: "/blog" },
+        ]}
+        route={router.asPath}
+      />
 
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </AuthProvider>
-    </div>
+      <main>
+        <Component {...pageProps} />
+      </main>
 
-    <Footer />
+      <Footer />
+    </AuthProvider>
 
     <style jsx global>{`
       html,
@@ -192,11 +78,11 @@ const App = ({ Component, pageProps, router }: AppProps) => (
         display: flex;
         flex-direction: column;
       }
-      #container {
+      main {
         flex: 1 0 auto;
       }
     `}</style>
-  </ChakraProvider>
+  </Chakra>
 );
 
 export default App;

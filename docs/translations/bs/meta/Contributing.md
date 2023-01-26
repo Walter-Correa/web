@@ -11,11 +11,11 @@ Ako želite pomoći u održavanju određenog jezika, otvorite _pull request_(PR)
 
 Na svakoj stranici nalazi se dugme koje vas dovodi na GitHub stranicu za uređivanje:
 
-![Uredi ovu stranicu](/images/contributing/edit-this-page.png)
+![Uredi ovu stranicu](images/contributing/edit-this-page.png)
 
-Naprimjer, Ukoliko kliknete ovo dugme na [SetVehicleAngularVelocity](../scripting/functions/SetVehicleAngularVelocity) odvesti će vas na [ovu stranicu](https://github.com/openmultiplayer/web/edit/master/docs/scripting/functions/SetVehicleAngularVelocity.md) koji vam nudi uređivač teksta kako biste mogli napraviti promjene u fajlu (Pod pretpostavkom da ste prijavljeni na vaš GitHub račun).
+Naprimjer, ukoliko kliknete ovo dugme na [SetVehicleAngularVelocity](../scripting/functions/SetVehicleAngularVelocity) odvesti će vas na [ovu stranicu](https://github.com/openmultiplayer/web/edit/master/docs/scripting/functions/SetVehicleAngularVelocity.md) koji vam nudi uređivač teksta kako biste mogli napraviti promjene u fajlu (pod pretpostavkom da ste prijavljeni na vaš GitHub račun).
 
-Uredi ga i postavi "Pull Request" , to znači da će Wiki održavatelji i ostali članovi zajednice pregledati vašu izmjenu, diskutovati o tome da li su potrebne dodatne izmjene i onda spojiti to.
+Uredi ga i postavi "Pull Request", to znači da će Wiki održavatelji i ostali članovi zajednice pregledati vašu izmjenu, diskutovati o tome da li su potrebne dodatne izmjene i onda primjeniti Vaše izmjene.
 
 ## Dodavanje Novog Sadržaja
 
@@ -23,9 +23,9 @@ Dodavanje novog sadržaja je malo više komplicirano. Možete to uraditi na dva 
 
 ### GitHub Sučelje
 
-Kada pregledavate direktorijum na GitHub-u, Tu se nalazi "Dodaj fajl" (Add File) dugme u gornjem desnom ćošku od liste fajlova:
+Kada pregledavate direktorijum na GitHub-u, tu se nalazi "Dodaj fajl" (Add File) dugme u gornjem desnom ćošku od liste fajlova:
 
-![Dodaj fajl dugme](/images/contributing/add-new-file.png)
+![Dodaj fajl dugme](images/contributing/add-new-file.png)
 
 Možete prenijeti MarkDown fajl koji ste već prethodno napisali ili ga napisati u GitHub tekst uređivaču.
 
@@ -43,16 +43,16 @@ git clone https://github.com/openmultiplayer/wiki.git
 
 Otvorite ga u vašem omiljenom text editoru. Preporučujem Visual Studio Code jer ima odličnih alata za uređivanje i formatiranje Markdown fajlova. Kao što možete da vidite, ja pišem ovo koristeći Visual Studio Code!
 
-![Visual Studio Code markdown pregled](/images/contributing/vscode.png)
+![Visual Studio Code markdown pregled](images/contributing/vscode.png)
 
 Predlažem dva produžetka (ekstenzije) za bolje iskustvo:
 
-- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) izradio: David Anson - ovo je produžetak (ekstenzija) koja osigurava da je vaš MarkDown korektno formatiran. To sprečava neke sintaksičke i semantičke greške. Nisu sva upozorenja važna, ali neka mogu pomoći za poboljšanje čitljivosti. Koristite najbolju presudbu a ako se dvoumite, samo pitajte recenzenta.
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) izradili: Prettier.js Team - Ovo je formater koji će automatski fprmatirati vaše Markdown fajlove tako da svi koriste dosljedan stil. Wiki Repository ima nekoliko podešavanja u svome `package.json` koje će ekstenzija automatski koristiti. Budite sigurni da omogućite "Formatiranje Pri Čuvanju" (Format On Save) u postavkama vašeg uređivača tako da vaši Markdown fajlovi butu automatski formatirani svaki put kada ih sačuvate.
+- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) izradio: David Anson - ovo je produžetak (ekstenzija) koja osigurava da je vaš MarkDown korektno formatiran. To spriječava neke sintaksičke i semantičke greške. Nisu sva upozorenja važna, ali neka mogu pomoći za poboljšanje čitljivosti. Koristite najbolju presudbu a ako se dvoumite, samo pitajte recenzenta.
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) izradili: Prettier.js Team - Ovo je formater koji će automatski formatirati vaše Markdown fajlove tako da svi koriste dosljedan stil. Wiki Repository ima nekoliko podešavanja u svome `package.json` koje će ekstenzija automatski koristiti. Budite sigurni da omogućite "Formatiranje Pri Čuvanju" (Format On Save) u postavkama vašeg uređivača tako da vaši Markdown fajlovi butu automatski formatirani svaki put kada ih sačuvate.
 
 ## Zabilješke, Savjeti i konvencije
 
-### IInterne Veze
+### Interne Veze
 
 Ne koristite apsolutne URL-ove za internetske veze. Koristite relativne puteve.
 
@@ -119,7 +119,7 @@ Kada pišete paragraf koji sadrži ime, brojeve, izraze ili bilo šta drugo za f
 
 - ❌
 
-  > fopen funkcija će vratiti vrijednost sa tagom File:, nema problema u toj liniji jer se povratna vrijednost pohranjuje u varijablu također sa tagom File: (imajte na umu da su i slučajevi isti). Kako god na sljedećoj liniji vrijednost 4 je dodana privremenoj referenci (file handle). 4 nema taga [...]
+  > fopen funkcija će vratiti vrijednost sa tagom `File:`, nema problema u toj liniji jer se povratna vrijednost pohranjuje u varijablu također sa tagom File: (imajte na umu da su i slučajevi isti). Kako god na sljedećoj liniji vrijednost 4 je dodana privremenoj referenci (file handle). 4 nema taga [...]
 
 - ✔
 
@@ -168,21 +168,23 @@ Većina sadržaja je premještena, ali ako pronađete stranicu koja fali, ovdje 
 
    (Firefox)
 
-   ![image](/images/contributing/04f024579f8d.png)
+   ![image](images/contributing/04f024579f8d.png)
 
    (Chrome)
 
-   ![image](/images/contributing/f62bb8112543.png)
+   ![image](images/contributing/f62bb8112543.png)
 
 2. Zadržite pokazivač u gornjem lijevom uglu glavne wiki stranice, na lijevoj margini ili uglu, dok ne vidite `#content`
 
-   ![image](/images/contributing/65761ffbc429.png)
+   ![image](images/contributing/65761ffbc429.png)
 
    Ili tražite `<div id=content>`
 
-   ![image](/images/contributing/77befe2749fd.png)
+   ![image](images/contributing/77befe2749fd.png)
 
-3. Kopirajte unutrašnji HTML tog elementa ![image](/images/contributing/8c7c75cfabad.png)
+3. Kopirajte unutrašnji HTML tog elementa
+
+    ![image](images/contributing/8c7c75cfabad.png)
 
    Sada imate _samo_ HTML kod pravog _sadržaja_ stranice, stvari koje nas zanimaju, i možete ih konvertovati u Markdown.
 
@@ -192,7 +194,7 @@ Za konvertovanje osnovnog HTML-a (bez tabela) u Markdown koristite:
 
 https://domchristie.github.io/turndown/
 
-![image](/images/contributing/77f4ea555bbb.png)
+![image](images/contributing/77f4ea555bbb.png)
 
 ^^ Primijetite sada da je potpuno zeznuo tablicu...
 
@@ -204,7 +206,7 @@ https://jmalarcon.github.io/markdowntables/
 
 I kopirajte samo `<table>` elemente u:
 
-![image](/images/contributing/57f171ae0da7.png)
+![image](images/contributing/57f171ae0da7.png)
 
 ### Čišćenje
 

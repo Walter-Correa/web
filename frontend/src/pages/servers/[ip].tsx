@@ -1,22 +1,25 @@
 import { Button } from "@chakra-ui/button";
 import { useColorModeValue } from "@chakra-ui/color-mode";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link, Stack, Text } from "@chakra-ui/layout";
-import { Spinner } from "@chakra-ui/spinner";
+import { Divider } from "@chakra-ui/react";
 import { Stat, StatLabel, StatNumber } from "@chakra-ui/stat";
 import { chakra } from "@chakra-ui/system";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table";
-import { formatDistance, formatDuration, formatRelative } from "date-fns";
+import { formatDistance } from "date-fns";
 import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
   NextPage,
 } from "next";
 import { NextSeo } from "next-seo";
-import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { FC } from "react";
+import ErrorBanner from "src/components/ErrorBanner";
+import BackLink from "src/components/forum/BackLink";
+import Measured from "src/components/generic/Measured";
+import LoadingBanner from "src/components/LoadingBanner";
 import { API_ADDRESS } from "src/config";
-import { APIError } from "src/types/_generated_Error";
 import { All } from "src/types/_generated_Server";
 import useSWR from "swr";
 
@@ -35,6 +38,26 @@ type Props = {
   initialData?: All;
 };
 
+type ServerLinkProps = { address: string };
+const ServerLink: FC<ServerLinkProps> = ({ address }) => {
+  return (
+    <Link href={address} isExternal _hover={{ textDecor: "none" }}>
+      <Button
+        mt={"1em"}
+        bgColor="#8477B7"
+        color="white"
+        border="solid 3px transparent"
+        _hover={{ bgColor: "#AEA0E1" }}
+        _active={{ bgColor: "#AEA0E1" }}
+        _focus={{ border: "solid 3px #BEB5DF" }}
+        rightIcon={<ArrowForwardIcon />}
+      >
+        Quick Join
+      </Button>
+    </Link>
+  );
+};
+
 const Info = ({ data }: { data: All }) => (
   <article>
     <NextSeo
@@ -45,14 +68,21 @@ const Info = ({ data }: { data: All }) => (
 
     <Flex alignItems="center" justifyContent="center">
       <Box
+        width="50em"
         px={8}
-        py={4}
+        py={8}
         rounded="lg"
-        shadow="lg"
+        shadow="base"
         bg={useColorModeValue("white", "gray.800")}
+        border="1px solid #8477B7"
       >
         <Stack spacing="4">
-          <Flex justifyContent="space-between" alignItems="center">
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            wrap="wrap"
+            gridGap="0.5em"
+          >
             <chakra.span
               fontSize="sm"
               color={useColorModeValue("gray.600", "gray.400")}
@@ -93,16 +123,17 @@ const Info = ({ data }: { data: All }) => (
             {data.description ? (
               <Text>{data.description}</Text>
             ) : (
-              <Text color="teal">This server has no description</Text>
+              <Text color="#9083D2">This server has no description</Text>
             )}
           </Box>
 
           <Stack
             spacing="4"
             direction={["column", "row"]}
-            justifyContent="space-around"
+            justifyContent="space-between"
+            alignItems="start"
           >
-            <Flex direction="column" justify="space-around" align="center">
+            <Flex direction="column" justify="space-around" align="start">
               <Stat>
                 <StatLabel>Players Online</StatLabel>
                 <StatNumber>
@@ -119,6 +150,7 @@ const Info = ({ data }: { data: All }) => (
                 <StatLabel>Language</StatLabel>
                 <StatNumber>{data.core.la}</StatNumber>
               </Stat>
+              <ServerLink address={`samp://${data.dm ?? data.ip}`} />
             </Flex>
 
             <Box>
@@ -142,8 +174,9 @@ const Info = ({ data }: { data: All }) => (
               ) : null}
             </Box>
           </Stack>
-          <Flex justifyContent="end">
-            <Text color="teal">
+          <Divider style={{ marginTop: "1.2em" }} />
+          <Flex justifyContent="start" m="0">
+            <Text color="#9083D2" m="0">
               <time>
                 {`Last updated ${formatDistance(
                   new Date(data.lastUpdated),
@@ -160,42 +193,31 @@ const Info = ({ data }: { data: All }) => (
 
 const Content = ({ ip, initialData }: Props) => {
   const { data, error } = useSWR<All, TypeError>(ip, getServer, {
-    initialData,
+    fallbackData: initialData,
   });
   if (error) {
-    return <Error error={error} />;
+    return <ErrorBanner {...error} />;
   }
   if (!data) {
-    return (
-      <Flex justify="center" width="full">
-        <Spinner size="xl" />
-      </Flex>
-    );
+    return <LoadingBanner />;
   }
 
   return <Info data={data} />;
 };
 
-const Error: FC<{ error: APIError }> = ({ error }) => (
-  <p>
-    Unfortunately there was an error while getting the server list! The error
-    message is below: <pre>{error.message}</pre>
-  </p>
-);
-const Page: NextPage<Props> = ({ ip, initialData }) => {
+const Page: NextPage<Props> = () => {
+  const router = useRouter();
+  const ip = router.query["ip"] as string | undefined;
+  if (!ip) {
+    return <LoadingBanner />;
+  }
   return (
-    <>
+    <Measured>
       <section className="center mv3">
         <Stack direction={["column"]} spacing="4">
-          <NextLink href="/servers">
-            <Link className="black-80 hover-blue">
-              <Button leftIcon={<ArrowBackIcon />} variant="outline">
-                Back
-              </Button>
-            </Link>
-          </NextLink>
+          <BackLink to="/servers" />
 
-          <Content ip={ip} initialData={initialData} />
+          <Content ip={ip} />
         </Stack>
       </section>
 
@@ -204,20 +226,8 @@ const Page: NextPage<Props> = ({ ip, initialData }) => {
           max-width: 50em;
         }
       `}</style>
-    </>
+    </Measured>
   );
-};
-
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<Props>> => {
-  const ip: string = context.params?.ip as string;
-  return {
-    props: {
-      ip: ip,
-      initialData: await getServer(ip),
-    },
-  };
 };
 
 export default Page;

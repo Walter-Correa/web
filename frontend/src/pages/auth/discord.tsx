@@ -1,76 +1,29 @@
-import React from "react";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
-
-import { apiSSP } from "src/fetcher/fetcher";
+import React, { FC } from "react";
+import ErrorBanner from "src/components/ErrorBanner";
+import { deriveError, oauth } from "src/fetcher/fetcher";
+import { APIError } from "src/types/_generated_Error";
 
 type Props = {
-  error?: Error;
+  error?: APIError;
 };
 
-const Page = ({ error }: Props) => (
-  <section className="center measure-wide">
-    <h1>An Error Occurred</h1>
-    <p>{error?.error_description}</p>
-    <pre>Error code: {error?.error}</pre>
-  </section>
-);
-
-type Payload = {
-  code: string;
-  state: string;
-};
-
-type Error = {
-  error: string;
-  error_description: string;
-};
+const Page: FC<Props> = ({ error }) => <ErrorBanner {...error} />;
 
 export const getServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<Props>> => {
-  if ("error" in ctx.query) {
-    const error: Error = {
-      error: ctx.query["error"] as string,
-      error_description: ctx.query["error_description"] as string,
-    };
-    return { props: { error } };
+  try {
+    const cookie = await oauth("discord", ctx);
+
+    ctx.res.setHeader("set-cookie", cookie);
+    ctx.res.writeHead(302, { Location: "/dashboard" });
+    ctx.res.end();
+    return { props: {} };
+  } catch (e) {
+    console.error(e);
+    return { props: { error: deriveError(e) } };
   }
-
-  const payload: Payload = {
-    code: ctx.query["code"] as string,
-    state: ctx.query["state"] as string,
-  };
-
-  const result = await apiSSP<{ headers: Headers }>(
-    "/auth/discord/callback",
-    {
-      method: "post",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: ctx?.req?.headers?.cookie ?? "",
-      },
-      credentials: "include",
-    },
-    undefined,
-    true
-  );
-  if (result.isError()) {
-    return {
-      props: {
-        error: {
-          error: result.error().error!,
-          error_description: result.error().message!,
-        },
-      },
-    };
-  }
-  const response = result.value();
-
-  ctx.res.setHeader("set-cookie", response.headers.get("set-cookie")!);
-  ctx.res.writeHead(302, { Location: "/dashboard" });
-  ctx.res.end();
-  return { props: {} };
 };
 
 export default Page;

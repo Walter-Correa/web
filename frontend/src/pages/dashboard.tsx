@@ -6,7 +6,8 @@ import GitHubIcon from "src/components/icons/GitHub";
 import DiscordIcon from "src/components/icons/Discord";
 import { APIError } from "src/types/_generated_Error";
 import OAuthButton from "src/components/OAuthButton";
-import { User } from "src/types/_generated_User";
+import { User, UserSchema } from "src/types/_generated_User";
+import NotificationsView from "src/components/notifications/NotificationsView";
 
 const placeholder = (idx: string, data: any, error?: APIError): JSX.Element => {
   if (error) return <span>(error)</span>;
@@ -15,7 +16,10 @@ const placeholder = (idx: string, data: any, error?: APIError): JSX.Element => {
 };
 
 const InfoItem = ({ title, idx }: { title: string; idx: string }) => {
-  const { data, error } = useSWR<User, APIError>("/users/self", apiSWR);
+  const { data, error } = useSWR<User, APIError>(
+    "/users/self",
+    apiSWR({ schema: UserSchema })
+  );
   return (
     <li className="pv2 mv2">
       <dl className="pa2 flex justify-between">
@@ -55,6 +59,10 @@ const Page = () => (
       <a href="/logout" className="link">
         Logout
       </a>
+    </section>
+    <section className="measure-wide center pa3">
+      <NotificationsView />
+      {/* <SubscriptionsView /> */}
     </section>
   </>
 );

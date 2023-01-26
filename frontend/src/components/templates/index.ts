@@ -6,25 +6,37 @@ import VersionWarnID from "./id/version-warning";
 import LowercaseNoteID from "./id/lowercase-note";
 import TipNPCCallbacksID from "./id/npc-callbacks-tip";
 
-import VersionWarnPT from "./pt/version-warning";
-import LowercaseNotePT from "./pt/lowercase-note";
-import TipNPCCallbacksPT from "./pt/npc-callbacks-tip";
+import VersionWarnPT_BR from "./pt-BR/version-warning";
+import LowercaseNotePT_BR from "./pt-BR/lowercase-note";
+import TipNPCCallbacksPT_BR from "./pt-BR/npc-callbacks-tip";
 
 import VersionWarnES from "./es/version-warning";
 import LowercaseNoteES from "./es/lowercase-note";
 import TipNPCCallbacksES from "./es/npc-callbacks-tip";
 
-export default {
+import VersionWarnCN from "./zh-cn/version-warning";
+import LowercaseNoteCN from "./zh-cn/lowercase-note";
+import TipNPCCallbacksCN from "./zh-cn/npc-callbacks-tip";
+
+import Image from "./Image";
+
+const templates = {
+  img: Image,
   VersionWarn,
   LowercaseNote,
   TipNPCCallbacks,
   VersionWarnID,
   LowercaseNoteID,
   TipNPCCallbacksID,
-  VersionWarnPT,
-  LowercaseNotePT,
-  TipNPCCallbacksPT,
+  VersionWarnPT: VersionWarnPT_BR,
+  LowercaseNotePT: LowercaseNotePT_BR,
+  TipNPCCallbacksPT: TipNPCCallbacksPT_BR,
   VersionWarnES,
   LowercaseNoteES,
   TipNPCCallbacksES,
+  VersionWarnCN,
+  LowercaseNoteCN,
+  TipNPCCallbacksCN,
 };
+
+export default templates;

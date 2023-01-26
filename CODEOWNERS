@@ -1,10 +1,10 @@
 *                                                                               @openmultiplayer/web
-/docs/translations/pt/                                                          @iPollo
+/docs/translations/pt-BR/                                                       @iPollo @ArTDsL
 /docs/translations/th/                                                          @aktah
 /docs/translations/id/                                                          @rsetiawan7 @se8870 @foxcovitsch
 /docs/translations/ro/                                                          @andreieurt
 /docs/translations/tr/                                                          @lilAmper @Opysium
-/docs/translations/bs/                                                          @daddyDOT @GalardoDev
+/docs/translations/bs/                                                          @daddyDOT @GalardoDev @remy-B4
 /docs/translations/sr/                                                          @TerzicScript
 /docs/translations/ph/                                                          @XomoX
 /docs/translations/fr/                                                          @sampben
@@ -14,4 +14,5 @@
 /docs/translations/zh-tw/                                                       @Kamirai
 /docs/translations/sl/                                                          @esh4ll0n
 /docs/translations/ar-TN/                                                       @ImOver00
-/docs/translations/pl/                                                          @debugitz, @Macius42
+/docs/translations/pl/                                                          @debugitz @Macius42
+docs/translations/sv/                                                           @fusez

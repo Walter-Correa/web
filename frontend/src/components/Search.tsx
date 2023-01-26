@@ -1,11 +1,8 @@
-import { last } from "lodash/fp";
+import { useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { FC, useCallback, useRef, useState } from "react";
 import { API_ADDRESS } from "src/config";
-import { Hit, SearchResults } from "src/types/searchResult";
-
-const clean = (path: string): string =>
-  noExtension(last(path.split("/")) ?? path);
+import { Hit, SearchResults } from "src/types/_generated_SearchResult";
 
 const noExtension = (path: string) => path.replace(".md", "");
 
@@ -57,10 +54,10 @@ const Search: FC = () => {
         />
         {active && results.length > 0 && (
           <ul className="results">
-            {results.map(({ id }) => (
-              <li className="result" key={id}>
-                <Link href={`/${noExtension(id)}`} as={`/${noExtension(id)}`}>
-                  <a>{clean(id)}</a>
+            {results.map(({ url, title }) => (
+              <li className="result" key={url}>
+                <Link href={`/${noExtension(url)}`} as={`/${noExtension(url)}`}>
+                  <a>{title}</a>
                 </Link>
               </li>
             ))}
@@ -73,6 +70,7 @@ const Search: FC = () => {
         }
 
         .search {
+          background-color: ${useColorModeValue('var(--chakra-colors-gray-50)', 'var(--chakra-colors-gray-800)')};
           border: 1px solid rgba(0, 0, 0, 0.3);
           border-top-width: 0px;
           box-sizing: border-box;
@@ -96,14 +94,14 @@ const Search: FC = () => {
         }
 
         .result {
-          background: #fff;
+          background-color: ${useColorModeValue('var(--chakra-colors-gray-50)', 'var(--chakra-colors-gray-900)')};
           padding: 18px;
           border: 1px solid rgba(0, 0, 0, 0.3);
           border-top-width: 0px;
         }
 
         .result:hover {
-          background: #f0f0f0;
+          background-color: ${useColorModeValue('var(--chakra-colors-gray-100)', 'var(--chakra-colors-gray-700)')};
         }
       `}</style>
     </>

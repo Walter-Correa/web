@@ -5,13 +5,15 @@ export const UserSchema = z.object({
   email: z.string(),
   authMethod: z.string(),
   name: z.string(),
-  bio: z.string().optional(),
+  bio: z.string().nullable(),
   admin: z.boolean(),
+  threadCount: z.number(),
+  postCount: z.number(),
   createdAt: z.string(),
   updatedAt: z.string(),
-  deletedAt: z.string().optional(),
-  github: z.string().optional(),
-  discord: z.string().optional(),
+  deletedAt: z.string().nullable(),
+  github: z.string().nullable(),
+  discord: z.string().nullable(),
 })
 export type User = z.infer<typeof UserSchema>
 

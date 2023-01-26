@@ -8,3 +8,5 @@ openmp.sublime-project
 *.bleve
 prisma/Studio/
 *.db
+.task
+.vercel

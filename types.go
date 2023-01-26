@@ -2,17 +2,20 @@ package main
 
 import (
 	"fmt"
-	"io/fs"
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/Southclaws/supervillain"
-	"github.com/openmultiplayer/web/server/src/api/auth/discord"
-	"github.com/openmultiplayer/web/server/src/api/auth/github"
-	"github.com/openmultiplayer/web/server/src/resources/forum"
-	"github.com/openmultiplayer/web/server/src/resources/server"
-	"github.com/openmultiplayer/web/server/src/resources/user"
-	"github.com/openmultiplayer/web/server/src/web"
+
+	"github.com/openmultiplayer/web/app/resources/forum/post"
+	"github.com/openmultiplayer/web/app/resources/notification"
+	"github.com/openmultiplayer/web/app/resources/server"
+	"github.com/openmultiplayer/web/app/resources/user"
+	"github.com/openmultiplayer/web/app/services/docsindex"
+	"github.com/openmultiplayer/web/app/transports/api/auth/discord"
+	"github.com/openmultiplayer/web/app/transports/api/auth/github"
+	"github.com/openmultiplayer/web/internal/web"
 )
 
 // -
@@ -45,7 +48,7 @@ func convert(name, prefix string, objs ...interface{}) {
 	ioutil.WriteFile(
 		out,
 		[]byte(output.String()),
-		fs.ModePerm,
+		os.ModePerm,
 	)
 }
 
@@ -53,7 +56,9 @@ func main() {
 	convert("Error", "API", web.Error{})
 	convert("Server", "", server.All{})
 	convert("User", "", user.User{})
-	convert("Forum", "", forum.Post{})
+	convert("Forum", "", post.Post{})
+	convert("SearchResult", "", docsindex.SearchResults{})
+	convert("Notification", "", notification.Notification{})
 
 	convert("GitHub", "", github.Link{}, github.Callback{})
 	convert("Discord", "", discord.Link{}, discord.Callback{})
