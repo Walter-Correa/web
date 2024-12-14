@@ -1,7 +1,7 @@
 ---
 title: OnPlayerRequestSpawn
 description: This callback is called when a player attempts to spawn via class selection either by pressing SHIFT or clicking the 'Spawn' button.
-tags: ["player"]
+tags: ["player", "class"]
 ---
 
 ## Description
@@ -14,7 +14,7 @@ This callback is called when a player attempts to spawn via class selection eith
 
 ## Returns
 
-It is always called first in filterscripts so returning 0 there also blocks other scripts from seeing it.
+It is always called first in filterscripts so returning 0 there also blocks other scripts from processing it.
 
 ## Examples
 

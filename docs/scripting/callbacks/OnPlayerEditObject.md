@@ -1,27 +1,25 @@
 ---
 title: OnPlayerEditObject
-description: This callback is called when a player finishes editing an object (EditObject/EditPlayerObject).
-tags: ["player"]
+description: This callback is called when a player finishes editing an object (BeginObjectEditing/BeginPlayerObjectEditing).
+tags: ["player", "object"]
 ---
-
-<VersionWarn name='callback' version='SA-MP 0.3e' />
 
 ## Description
 
-This callback is called when a player finishes editing an object ([EditObject](../functions/EditObject)/[EditPlayerObject](../functions/EditPlayerObject)).
+This callback is called when a player finishes editing an object ([BeginObjectEditing](../functions/BeginObjectEditing)/[BeginPlayerObjectEditing](../functions/BeginPlayerObjectEditing)).
 
-| Name         | Description                                                        |
-| ------------ | ------------------------------------------------------------------ |
-| playerid     | The ID of the player that edited an object                         |
-| playerobject | 0 if it is a global object or 1 if it is a playerobject.           |
-| objectid     | The ID of the edited object                                        |
-| response     | The [type of response](../resources/objecteditionresponsetypes) |
-| Float:fX     | The X offset for the object that was edited                        |
-| Float:fY     | The Y offset for the object that was edited                        |
-| Float:fZ     | The Z offset for the object that was edited                        |
-| Float:fRotX  | The X rotation for the object that was edited                      |
-| Float:fRotY  | The Y rotation for the object that was edited                      |
-| Float:fRotZ  | The Z rotation for the object that was edited                      |
+| Name                   | Description                                                     |
+|------------------------|-----------------------------------------------------------------|
+| playerid               | The ID of the player that edited an object                      |
+| playerobject           | 0 if it is a global object or 1 if it is a playerobject.        |
+| objectid               | The ID of the edited object                                     |
+| EDIT_RESPONSE:response | The [type of response](../resources/objecteditionresponsetypes) |
+| Float:fX               | The X offset for the object that was edited                     |
+| Float:fY               | The Y offset for the object that was edited                     |
+| Float:fZ               | The Z offset for the object that was edited                     |
+| Float:fRotX            | The X rotation for the object that was edited                   |
+| Float:fRotY            | The Y rotation for the object that was edited                   |
+| Float:fRotZ            | The Z rotation for the object that was edited                   |
 
 ## Returns
 
@@ -34,7 +32,7 @@ It is always called first in filterscripts.
 ## Examples
 
 ```c
-public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ)
+public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ)
 {
     new
         Float: oldX,
@@ -46,6 +44,7 @@ public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, 
 
     GetObjectPos(objectid, oldX, oldY, oldZ);
     GetObjectRot(objectid, oldRotX, oldRotY, oldRotZ);
+    
     if (!playerobject) // If this is a global object, sync the position for other players
     {
         if (!IsValidObject(objectid))
@@ -95,8 +94,12 @@ When using 'EDIT_RESPONSE_UPDATE' be aware that this callback will not be called
 
 The following functions might be useful, as they're related to this callback in one way or another. 
 
-- [EditPlayerObject](../functions/EditPlayerObject): Edit a player-object.
-- [EditObject](../functions/EditObject): Edit an object.
+- [BeginPlayerObjectEditing](../functions/BeginPlayerObjectEditing): Edit a player-object.
+- [BeginObjectEditing](../functions/BeginObjectEditing): Edit an object.
 - [CreateObject](../functions/CreateObject): Create an object.
 - [DestroyObject](../functions/DestroyObject): Destroy an object.
 - [MoveObject](../functions/MoveObject): Move an object.
+
+## Related Resources
+
+- [Object Edition Response Types](../resources/objecteditionresponsetypes)

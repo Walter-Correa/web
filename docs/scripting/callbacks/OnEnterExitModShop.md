@@ -1,10 +1,8 @@
 ---
 title: OnEnterExitModShop
 description: This callback is called when a player enters or exits a mod shop.
-tags: []
+tags: ["player"]
 ---
-
-<VersionWarn name='callback' version='SA-MP 0.3a' />
 
 ## Description
 
@@ -38,7 +36,9 @@ public OnEnterExitModShop(playerid, enterexit, interiorid)
 
 :::warning
 
-Known Bug(s): Players collide when they get into the same mod shop.
+Known Bug(s):
+
+- Players collide when they get into the same mod shop.
 
 :::
 
@@ -54,4 +54,5 @@ The following callbacks might be useful, as they're related to this callback in 
 
 The following functions might be useful, as they're related to this callback in one way or another. 
 
+- [IsPlayerInModShop](../functions/IsPlayerInModShop): Check if the player is in the mod shop.
 - [AddVehicleComponent](../functions/AddVehicleComponent): Add a component to a vehicle.

@@ -3,8 +3,9 @@ import ISO6391 from "iso-639-1";
 const missingLanguages: Record<string, string> = {
   "zh-tw": "繁體中文",
   "zh-cn": "简体中文",
-  "ar-TN": "تونسي",
-  "pt-BR": "Português do Brasil"
+  "ar": "العربية",
+  "pt-BR": "Português do Brasil",
+  "ta": "தமிழ்"
 };
 
 const getLanguageName = (short: string) =>

@@ -33,7 +33,7 @@ It is always called first in filterscripts.
 
 :::warning
 
-Reason 3 was originally added in SA:MP by fixes.inc
+Reason 3 was originally added in SA:MP by [fixes.inc](https://github.com/pawn-lang/sa-mp-fixes)
 
 Reasons 3 and 4 were added by the Open Multiplayer server.  
 
@@ -50,7 +50,7 @@ public OnPlayerDisconnect(playerid, reason)
 
     GetPlayerName(playerid, playerName, MAX_PLAYER_NAME);
 
-    new szDisconnectReason[3][] =
+    new szDisconnectReason[5][] =
     {
         "Timeout/Crash",
         "Quit",
@@ -70,7 +70,9 @@ public OnPlayerDisconnect(playerid, reason)
 
 :::tip
 
-Some functions might not work correctly when used in this callback because the player is already disconnected when the callback is called. This means that you can't get unambiguous information from functions like GetPlayerIp and GetPlayerPos.
+Some functions might not work correctly when used in this callback because the player is already disconnected when the callback is called. This means that you can't get unambiguous information from functions like [GetPlayerIp](GetPlayerIp) and [GetPlayerPos](GetPlayerPos).
+
+This issue is solved in open.mp server.
 
 :::
 

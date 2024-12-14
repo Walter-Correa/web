@@ -4,8 +4,6 @@ description: This callback is called when a player is streamed by some other pla
 tags: ["player"]
 ---
 
-<VersionWarn name='callback' version='SA-MP 0.3a' />
-
 ## Description
 
 This callback is called when a player is streamed by some other player's client.
@@ -41,4 +39,4 @@ The following callbacks might be useful, as they're related to this callback in 
 
 - [OnPlayerStreamOut](OnPlayerStreamOut): This callback is called when a player streams out for another player. 
 - [OnActorStreamIn](OnPlayerStreamOut): This callback is called when an actor is streamed in by a player. 
-- [OnVehicleStreamIn](OnPlayerStreamOut): This callback is called when a vehicle streams in for a player. 
+- [OnVehicleStreamIn](OnVehicleStreamIn): This callback is called when a vehicle streams in for a player. 

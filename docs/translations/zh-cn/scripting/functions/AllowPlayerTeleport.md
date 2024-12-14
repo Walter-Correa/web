@@ -1,47 +1,49 @@
 ---
 title: AllowPlayerTeleport
-description: 为玩家启用/禁用在地图上点击右键传送的功能。
+description: Enable/Disable the teleporting ability for a player by right-clicking on the map.
 tags: ["player"]
 ---
 
 :::warning
 
-从 0.3d 版本开始，这个函数已被废弃。见[OnPlayerClickMap](../callbacks/OnPlayerClickMap)。
+This function, as of 0.3d, is deprecated. Check [OnPlayerClickMap](../callbacks/OnPlayerClickMap).
 
 :::
 
-## 描述
+## Description
 
-为玩家启用/禁用在地图上点击右键传送的功能。
+Enable/Disable the teleporting ability for a player by right-clicking on the map
 
-| 参数名   | 说明                  |
-| -------- | --------------------- |
-| playerid | 允许传送的玩家的 ID。 |
-| allow    | 1-启用，0-禁用        |
+| Name       | Description                              |
+| ---------- | ---------------------------------------- |
+| playerid   | The ID of the player to allow teleport.  |
+| bool:allow | 'false' to disallow and 'true' to allow. |
 
-## 返回值
+## Returns
 
-该函数不返回任何特定的值。
+This function does not return any specific values.
 
-## 案例
+## Examples
 
 ```c
 public OnPlayerConnect(playerid)
 {
-    // 启用玩家在地图上点击右键传送的功能。
-    // 因为代码放在玩家连接的回调中，所以每个玩家都能传送。
-    AllowPlayerTeleport(playerid, 1);
+    // Allows the Player to teleport by right-clicking on the map
+    // since this is in OnPlayerConnect, this will be done for EACH player
+    AllowPlayerTeleport(playerid, true);
+    return 1;
 }
 ```
 
-## 要点
+## Notes
 
 :::warning
 
-这个函数只有在[AllowAdminTeleport](AllowAdminTeleport)被启用时才会起作用，而且你必须是管理员。
+This function will work only if [AllowAdminTeleport](AllowAdminTeleport) is enabled, and you have to be an admin.
 
 :::
 
-## 相关函数
+## Related Functions
 
-- [AllowAdminTeleport](AllowAdminTeleport): 控制 RCON 管理员在设置导航点时是否会被传送。
+- [IsPlayerTeleportAllowed](IsPlayerTeleportAllowed): Can this player teleport by right-clicking on the map?
+- [AllowAdminTeleport](AllowAdminTeleport): Toggle waypoint teleporting for RCON admins.

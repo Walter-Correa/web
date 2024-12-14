@@ -4,13 +4,13 @@ description: Callback appelée quand un joueur fini de télécharger les models 
 tags: ["player"]
 ---
 
-<VersionWarn name='callback' version='SA-MP 0.3.DL' />
+<VersionWarn name='callback' version='SA-MP 0.3.DL R1' />
 
 ## Paramètres
 
 Callback appelée quand un joueur fini de télécharger les models custom du serveur.
 
-Pour plus d'informations sur comment ajouter des custom models sur son serveur, référez-vous aux tutoriels sur [Burgershot.gg](https://www.burgershot.gg/).
+Pour plus d'informations sur comment ajouter des custom models sur son serveur, référez-vous aux tutoriels sur [Burgershot.gg](https://forum.open.mp/).
 
 | Nom                | Description                                                                    |
 | ------------------ | ------------------------------------------------------------------------------ |

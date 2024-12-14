@@ -17,7 +17,7 @@ This callback is called when a player exits a mod shop, even if the colors weren
 
 ## Returns
 
-It is always called first in gamemode so returning 0 there also blocks other filterscripts from seeing it.
+It is always called first in gamemode so returning 0 there also blocks other filterscripts from processing it.
 
 ## Examples
 
@@ -43,7 +43,9 @@ Fix here: http://pastebin.com/G81da7N1
 
 :::warning
 
-Known Bug(s): previewing a component inside a mod shop might call this callback.
+Known Bug(s):
+
+- Previewing a component inside a mod shop might call this callback.
 
 :::
 

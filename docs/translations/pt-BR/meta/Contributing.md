@@ -70,7 +70,7 @@ Não utilize URL's absolutas para links dentro do site. Use caminhos relativos.
 
 ### Imagens
 
-Imagens vão dentro de um sub-diretório em `/static/images`. Então quando quando você 'linkar' uma imagem em `![]()` você utiliza `/images/` como o caminho base (sem necessidade de `static`, é apenas para o repositório).
+Imagens vão dentro de um sub-diretório em `/static/images`. Então quando você 'linkar' uma imagem em `![]()` você utiliza `/images/` como o caminho base (sem necessidade de `static`, é apenas para o repositório).
 
 Em caso de dúvida, leia uma página que contenha imagens e copie como está feito nela.
 
@@ -190,7 +190,7 @@ Maior parte do conteúdo já foi movido, mas se encontrar uma página faltando, 
 
 Para converter HTML básico (sem tabelas) para "Markdown" use:
 
-https://domchristie.github.io/turndown/
+https://mixmark-io.github.io/turndown/
 
 ![image](images/contributing/77f4ea555bbb.png)
 

@@ -15,9 +15,9 @@ Set a player's interior. A list of currently known interiors and their positions
 
 ## Returns
 
-1: The function executed successfully.
+**true** - The function executed successfully.
 
-0: The function failed to execute. This means the player is not connected.
+**false** - The function failed to execute. This means the player is not connected.
 
 ## Examples
 
@@ -31,3 +31,7 @@ SetPlayerInterior(playerid, 0);
 - [GetPlayerInterior](GetPlayerInterior): Get the current interior of a player.
 - [LinkVehicleToInterior](LinkVehicleToInterior): Change the interior that a vehicle is seen in.
 - [OnPlayerInteriorChange](../callbacks/OnPlayerInteriorChange): Called when a player changes interior.
+
+## Related Resources
+
+- [Interior IDs](../resources/interiorids)

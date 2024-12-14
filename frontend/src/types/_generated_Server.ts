@@ -9,6 +9,8 @@ export const EssentialSchema = z.object({
   la: z.string(),
   pa: z.boolean(),
   vn: z.string(),
+  omp: z.boolean(),
+  pr: z.boolean(),
 })
 export type Essential = z.infer<typeof EssentialSchema>
 
@@ -20,7 +22,9 @@ export const AllSchema = z.object({
   description: z.string().nullable(),
   banner: z.string().nullable(),
   active: z.boolean(),
+  pending: z.boolean(),
   lastUpdated: z.string(),
+  lastActive: z.string().nullable(),
 })
 export type All = z.infer<typeof AllSchema>
 

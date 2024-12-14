@@ -1,10 +1,8 @@
 ---
 title: OnTrailerUpdate
 description: This callback is called when a player sent a trailer update.
-tags: []
+tags: ["vehicle"]
 ---
-
-<VersionWarn name='callback' version='SA-MP 0.3z R4' />
 
 ## Description
 
@@ -41,7 +39,7 @@ This callback is called very frequently per second per trailer. You should refra
 
 :::
 
-## Related Functions
+## Related Callbacks
 
 The following callbacks might be useful, as they're related to this callback in one way or another. 
 

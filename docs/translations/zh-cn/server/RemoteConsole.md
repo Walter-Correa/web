@@ -1,17 +1,18 @@
 ---
-title: "远程控制 (RCON)"
-description: 远程服务器管理.
+title: "Remote Console (RCON)"
+description: Remote server administation.
 ---
 
-远程控制台是一个命令提示符，您可以在其中使用 RCON 命令，而无需进入游戏和服务器。 从 0.3b 开始，远程控制台已从服务器详细信息中删除。 从现在开始，您将必须使用另一种方式来访问远程 RCON，如下所述。
+远程控制台是一个命令提示符，你可以在不进入游戏和服务器的情况下使用RCON命令。从0.3b版本开始，远程控制台已从服务器浏览器中移除。现在你需要使用另一种方式来访问远程RCON，如下所述。
 
-1. 打开一个文本编辑器 (记事本即可).
-2. 在其中写入: `rcon.exe IP PORT RCON-PASS` (将 IP/PORT/RCON-PASS 替换为您的服务器信息)
-3. 保存该文件为 `rcon.bat`
-4. 将该文件放入与 `rcon.exe` 同级目录.
+1. 打开一个文本编辑器。
+2. 写入以下内容：`rcon.exe IP PORT RCON-PASS`（用你的服务器详情替换IP/PORT/PASS）
+3. 将文件保存为 `rcon.bat`
+4. 将该文件放入`rcon.exe`所在的GTA目录中。
 5. 运行 `rcon.bat`
-6. 如果参数无误，您将能够连接到您的服务器，可以输入任意 RCON 命令管理您的服务器.
+6. 输入你想使用的命令。
 
-![Rcon 控制台](/images/server/rcon.jpg)
+![Rcon console](/images/server/rcon.jpg)
 
-注意：不需要在服务器控制台的命令前输入`/rcon`，否则命令将不起作用。 例如，如果您想重置服务器，只需键入“gmx”并回车即可。 
+注意：在服务器浏览器中不需要在命令前输入 `/rcon`，如果你这样做，命令将无法执行。例如，如果你想重置服务器，只需输入 `gmx` 并按下回车键。这就是你需要做的所有操作。享受它吧!
+

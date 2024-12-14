@@ -1,38 +1,42 @@
 ---
 title: OnPlayerStreamOut
-description: 当某个玩家从其他玩家的客户端流出时，会调用此回调。
+description: This callback is called when a player is streamed out from some other player's client.
 tags: ["player"]
 ---
 
-<VersionWarnCN name='回调' version='SA-MP 0.3a' />
+## Description
 
-## 描述
+This callback is called when a player is streamed out from some other player's client.
 
-当某个玩家从其他玩家的客户端流出时，会调用此回调。
+| Name        | Description                                     |
+| ----------- | ----------------------------------------------- |
+| playerid    | The player who has been destreamed.             |
+| forplayerid | The player who has destreamed the other player. |
 
-| 参数名      | 描述                |
-| ----------- | ------------------- |
-| playerid    | 已被流出的玩家 ID。 |
-| forplayerid | 失去该流的玩家 ID   |
+## Returns
 
-## 返回值
+It is always called first in filterscripts.
 
-它在过滤脚本中总是先被调用。
-
-## 案例
+## Examples
 
 ```c
 public OnPlayerStreamOut(playerid, forplayerid)
 {
     new string[80];
-    format(string, sizeof(string), "你的电脑刚刚流出了玩家ID %d", playerid);
+    format(string, sizeof(string), "Your computer has just unloaded player ID %d", playerid);
     SendClientMessage(forplayerid, 0xFF0000FF, string);
     return 1;
 }
 ```
 
-## 要点
+## Notes
 
-<TipNPCCallbacksCN />
+<TipNPCCallbacks />
 
-## 相关函数
+## Related Callbacks
+
+The following callbacks might be useful, as they're related to this callback in one way or another. 
+
+- [OnPlayerStreamIn](OnPlayerStreamIn): This callback is called when a player streams in for another player. 
+- [OnActorStreamIn](OnPlayerStreamOut): This callback is called when an actor is streamed in by a player. 
+- [OnVehicleStreamIn](OnPlayerStreamOut): This callback is called when a vehicle streams in for a player. 

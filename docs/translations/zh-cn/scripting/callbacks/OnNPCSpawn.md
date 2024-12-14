@@ -1,22 +1,21 @@
 ---
 title: OnNPCSpawn
-description: 当npc生成时调用此回调。
-tags: []
+description: This callback is called when a NPC spawned.
+tags: ["npc"]
 ---
 
-<VersionWarnCN name='回调' version='SA-MP 0.3a' />
+## Description
 
-## 描述
+This callback is called when a NPC spawned.
 
-当 npc 生成时调用此回调。
 
-## 案例
+## Examples
 
 ```c
 public OnNPCSpawn()
 {
-    print("NPC 生成了");
-    SendChat("你好世界. 我是个机器人.");
+    print("NPC spawned");
+    SendChat("Hello World. I'm a bot.");
     return 1;
 }
 ```

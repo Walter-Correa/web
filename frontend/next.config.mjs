@@ -33,7 +33,7 @@ const config = (phase) => {
     // prettier-ignore
     redirects() {
       return [
-        { source: "/forum", destination: "https://burgershot.gg", permanent: false},
+        { source: "/forum", destination: "https://forum.open.mp", permanent: false},
         { source: "/wiki", destination: "https://open.mp/docs ", permanent: true},
         { source: "/links", destination: "https://linktr.ee/openmultiplayer", permanent: true},
         { source: "/videos", destination: "https://youtube.com/openmultiplayer", permanent: true},
@@ -41,7 +41,8 @@ const config = (phase) => {
         { source: "/live", destination: "https://twitch.tv/openmultiplayer", permanent: true},
         { source: "/twitch", destination: "https://twitch.tv/openmultiplayer", permanent: true},
         { source: "/stream", destination: "https://twitch.tv/openmultiplayer", permanent: true},
-        { source: "/twitter", destination: "https://twitter.com/openmultiplayer", permanent: true},
+        { source: "/twitter", destination: "https://x.com/openmultiplayer", permanent: true},
+        { source: "/x", destination: "https://x.com/openmultiplayer", permanent: true},
         { source: "/instagram", destination: "https://instagram.com/openmultiplayer", permanent: true},
       ]
     },

@@ -30,10 +30,9 @@ public OnPlayerConnect(playerid)
 
 public OnClientCheckResponse(playerid, actionid, memaddr, retndata)
 {
-    if(actionid == 0x48) // or 72
+    if (actionid == 0x48) // or 72
     {
-        print("WARNING: The player doesn't seem to be using a regular computer!");
-        Kick(playerid);
+        print("The player is connecting using the PC client.");
     }
     return 1;
 }
@@ -54,3 +53,7 @@ public OnClientCheckResponse(playerid, actionid, memaddr, retndata)
 The following function might be useful, as they're related to this callback in one way or another. 
 
 - [SendClientCheck](../functions/SendClientCheck): Perform a memory check on the client.
+
+## Related Resources
+
+- [opcodes](../resources/opcodes): Action opcodes IDs and their purpose.
