@@ -12,7 +12,6 @@ import (
 
 	"github.com/openmultiplayer/web/app/services/authentication"
 	"github.com/openmultiplayer/web/app/transports/api/auth"
-	"github.com/openmultiplayer/web/app/transports/api/docs"
 	"github.com/openmultiplayer/web/app/transports/api/launcher"
 	"github.com/openmultiplayer/web/app/transports/api/legacy"
 	"github.com/openmultiplayer/web/app/transports/api/metrics"
@@ -27,7 +26,6 @@ func Build() fx.Option {
 	return fx.Options(
 		metrics.Build(),
 		auth.Build(),
-		docs.Build(),
 		legacy.Build(),
 		servers.Build(),
 		users.Build(),
@@ -47,19 +45,20 @@ func Build() fx.Option {
 		fx.Provide(func(as *authentication.State, l *zap.Logger, cfg config.Config) chi.Router {
 			router := chi.NewRouter()
 
-			origins := []string{
-				"http://localhost:3000",    // Local development, `npm run dev`
-				cfg.LauncherBackendAddress, // Launcher backend address
-				cfg.PublicWebAddress,       // Live public website
-			}
+			// Just use *, people actually use our api publicly
+			// origins := []string{
+			// 	"http://localhost:3000",    // Local development, `npm run dev`
+			// 	cfg.LauncherBackendAddress, // Launcher backend address
+			// 	cfg.PublicWebAddress,       // Live public website
+			// }
 
-			l.Debug("preparing router", zap.Strings("origins", origins))
+			// l.Debug("preparing router", zap.Strings("origins", origins))
 
 			router.Use(
 				web.WithLogger,
 				web.WithContentType,
 				cors.Handler(cors.Options{
-					AllowedOrigins:   origins,
+					AllowedOrigins:   []string{"*"},
 					AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 					AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "Content-Length", "X-CSRF-Token"},
 					ExposedHeaders:   []string{"Link", "Content-Length", "X-Ratelimit-Limit", "X-Ratelimit-Reset"},
